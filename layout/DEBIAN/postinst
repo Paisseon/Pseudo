@@ -1,0 +1,6 @@
+#!/bin/sh
+
+chown 0:0 /usr/bin/pseudo -cv
+chmod 06755 /usr/bin/pseudo -cv
+
+exit 0 

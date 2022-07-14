@@ -1,0 +1,9 @@
+Package: emt.paisseon.pseudo
+Name: pseudo
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Iykyk
+Maintainer: Paisseon
+Author: Paisseon
+Section: System
+Tag: role::hacker
