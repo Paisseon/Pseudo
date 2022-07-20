@@ -1,5 +1,6 @@
 #include <dlfcn.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 void root_taurine(void) {
@@ -27,8 +28,8 @@ void root_taurine(void) {
     }
 }
 
-int main(int argc, char *argv[], char *envp[]) {
-    const char *sh;
+int main(int argc, char *argv[]) {
+    char cmd[100];
     
     setuid(0);
     setgid(0);
@@ -40,14 +41,25 @@ int main(int argc, char *argv[], char *envp[]) {
     
     getuid();
     
-    if (argc >= 2 && (sh = argv[1], *sh == 47)) {
-        ++argv;
-    } else {
-        sh    = "/bin/bash";
-        *argv = "/bin/bash";
+    switch (argc) {
+        case 1:
+            strcpy(cmd, "/bin/bash");
+            break;
+        case 2:
+            strcpy(cmd, argv[1]);
+            break;
+        default:
+            strcpy(cmd, argv[1]);
+            
+            for (int i = 2; i < argc; i++) {
+                strcat(cmd, " ");
+                strcat(cmd, argv[i]);
+            }
+            
+            break;
     }
     
-    execv(sh, (char * const *)argv);
+    execl("/bin/bash", "/bin/bash", "-c", cmd, NULL);
     
     return 0;
 }

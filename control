@@ -1,8 +1,9 @@
 Package: emt.paisseon.pseudo
 Name: pseudo
-Version: 0.0.1
+Version: 0.1
 Architecture: iphoneos-arm
-Description: Iykyk
+Description: Use it like sudo or su
+Depends: bash
 Maintainer: Paisseon
 Author: Paisseon
 Section: System
